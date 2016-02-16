@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="home" type="id"/>
+    <item name="trainee" type="id"/>
+    <item name="my" type="id"/>
+    <item name="logout" type="id"/>
+    <item name="include_home_title" type="id"/>
+    <item name="bottom_home" type="id"/>
+    <item name="banner" type="id"/>
+    <item name="line_first" type="id"/>
+    <item name="left_home" type="id"/>
+    <item name="right_home" type="id"/>
+    <item name="line_second" type="id"/>
+    <item name="two_photo_home" type="id"/>
+    <item name="ll_first" type="id"/>
+    <item name="ll_one" type="id"/>
+    <item name="ll_two" type="id"/>
+    <item name="ll_second" type="id"/>
+    <item name="line_third" type="id"/>
+    <item name="ll_three" type="id"/>
+    <item name="trainee_title" type="id"/>
+    <item name="trainee_bottom" type="id"/>
+    <item name="my_title" type="id"/>
+    <item name="my_bottom" type="id"/>
+    <item name="iv_trainee" type="id"/>
+    <item name="tv_trainee" type="id"/>
+    <item name="tv_my" type="id"/>
+    <item name="iv_my" type="id"/>
+    <item name="iv_home" type="id"/>
+    <item name="tv_home" type="id"/>
+    <item name="head_portrait" type="id"/>
+    <item name="name" type="id"/>
+    <item name="phone_number" type="id"/>
+    <item name="rl_my_title" type="id"/>
+    <item name="rl_detail_my" type="id"/>
+    <item name="iv_detail" type="id"/>
+    <item name="rl_modify_password_my" type="id"/>
+    <item name="rl_service_road" type="id"/>
+    <item name="rl_wallet_my" type="id"/>
+    <item name="rl_advice_feedback" type="id"/>
+    <item name="rl_customer_care" type="id"/>
+    <item name="bt_my" type="id"/>
+
+</resources>
