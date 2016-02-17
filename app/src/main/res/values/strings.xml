@@ -19,4 +19,21 @@
     <string name="customer_care">客服热线</string>
     <string name="number_customer_care">4008-090-525</string>
     <string name="look_through">正在审核中...</string>
+    <string name="edit_head_photo">编辑头像</string>
+    <string name="name_detail">姓名</string>
+    <string name="name_register">蛋疼</string>
+    <string name="sex_detail">性别</string>
+    <string name="sex">男</string>
+    <string name="drive_age">驾龄</string>
+    <string name="contact_phone">联系电话</string>
+    <string name="phone_contact">188***2486</string>
+    <string name="drive_age_number">20</string>
+    <string name="birth_date">出生日期</string>
+    <string name="height_weight">身高体重</string>
+    <string name="ancestral_homeland">祖籍</string>
+    <string name="introduction">其他介绍</string>
+    <string name="driving_license">驾驶证</string>
+    <string name="teacher_certificate">教员证</string>
+    <string name="car_license">车牌号</string>
+    <string name="car_license_detail">你猜</string>
 </resources>

@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import lala.com.learncar.activity.DetailActivity;
+
 public class MyActivity extends Activity{
     private LinearLayout home;
     private LinearLayout trainee;
@@ -57,5 +59,12 @@ public class MyActivity extends Activity{
         tv_my.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         iv_my.setImageResource(R.drawable.my_blue);
         RelativeLayout rl_detail_my= (RelativeLayout) findViewById(R.id.rl_detail_my);
+        rl_detail_my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyActivity.this, DetailActivity.class));
+
+            }
+        });
     }
 }

@@ -40,5 +40,31 @@
     <item name="rl_advice_feedback" type="id"/>
     <item name="rl_customer_care" type="id"/>
     <item name="bt_my" type="id"/>
+    <item name="back_left_white" type="id"/>
+    <item name="rl_edit_head_photo" type="id"/>
+    <item name="rl_name_detail" type="id"/>
+    <item name="name_register_detail" type="id"/>
+    <item name="rl_sex_detail" type="id"/>
+    <item name="sex_register_detail" type="id"/>
+    <item name="rl_drive_age_detail" type="id"/>
+    <item name="drive_register_detail" type="id"/>
+    <item name="rl_contact_phone_detail" type="id"/>
+    <item name="contact_phone_register_detail" type="id"/>
+    <item name="birth_date_register_detail" type="id"/>
+    <item name="rl_height_weight_detail" type="id"/>
+    <item name="height_weight_register_detail" type="id"/>
+    <item name="rl_ancestral_homeland_detail" type="id"/>
+    <item name="ancestral_homeland_register_detail" type="id"/>
+    <item name="rl_introduction_detail" type="id"/>
+    <item name="introduction_register_detail" type="id"/>
+    <item name="rl_driving_license_detail" type="id"/>
+    <item name="driving_license_register_detail" type="id"/>
+    <item name="rl_teacher_certificate_detail" type="id"/>
+    <item name="teacher_certificate_register_detail" type="id"/>
+    <item name="rl_car_license_detail" type="id"/>
+    <item name="car_license_register_detail" type="id"/>
+    <item name="rl_my_photo_detail" type="id"/>
+    <item name="upload_photo_three" type="id"/>
+    <item name="iv_photo_upload" type="id"/>
 
 </resources>
