@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lala.com.learncar">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,9 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TraineeActivity"/>
-        <activity android:name=".MyActivity"/>
-        <activity android:name=".activity.DetailActivity"/>
+        <activity android:name=".TraineeActivity" />
+        <activity android:name=".MyActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.PasswordModifyActivity" />
+        <activity android:name=".activity.ServiceRoadActivity" />
+        <activity android:name=".activity.MyWalletActivity" />
+        <activity android:name=".activity.AdviceFeedbackActivity"/>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
     </application>
 
 </manifest>

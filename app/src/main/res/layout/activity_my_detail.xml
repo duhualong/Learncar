@@ -39,7 +39,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:text="@string/edit_head_photo"/>
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/head_portrait"
             android:layout_alignParentEnd="true"
             android:layout_width="65dp"

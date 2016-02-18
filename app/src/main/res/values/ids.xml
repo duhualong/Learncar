@@ -66,5 +66,32 @@
     <item name="rl_my_photo_detail" type="id"/>
     <item name="upload_photo_three" type="id"/>
     <item name="iv_photo_upload" type="id"/>
+    <item name="et_password_old" type="id"/>
+    <item name="select_default" type="id"/>
+    <item name="password_now" type="id"/>
+    <item name="password_repeat" type="id"/>
+    <item name="bt_select_default" type="id"/>
+    <item name="edit_service_road" type="id"/>
+    <item name="location_blue" type="id"/>
+    <item name="tv_location_automatic" type="id"/>
+    <item name="location_refresh" type="id"/>
+    <item name="tv_location_automatic_hand" type="id"/>
+    <item name="iv_three_line" type="id"/>
+    <item name="rl_my_wallet_title" type="id"/>
+    <item name="detail_money" type="id"/>
+    <item name="rl_total_money" type="id"/>
+    <item name="iv_no_money" type="id"/>
+    <item name="feedback_bt" type="id"/>
+    <item name="et_name_dialog" type="id"/>
+    <item name="tv_name_dialog" type="id"/>
+    <item name="tv_name" type="id"/>
+    <item name="ok_bt" type="id"/>
+    <item name="cancel_bt" type="id"/>
+    <item name="rg_select_sex" type="id"/>
+    <item name="man_sex" type="id"/>
+    <item name="rl_select_woman" type="id"/>
+    <item name="woman_sex" type="id"/>
+    <item name="iv_logo_head_photo" type="id"/>
+    <item name="et_drive_age" type="id"/>
 
 </resources>

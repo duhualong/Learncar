@@ -36,4 +36,23 @@
     <string name="teacher_certificate">教员证</string>
     <string name="car_license">车牌号</string>
     <string name="car_license_detail">你猜</string>
+    <string name="input_password_old">请输入原密码</string>
+    <string name="password_length_type">密码为6~12位,字母或数字</string>
+    <string name="please_again_password">请再次输入密码</string>
+    <string name="edit_service_road">编辑</string>
+    <string name="address_tv_location_automatic">上海市杨浦区营口路588号</string>
+    <string name="total_money">总金额(元)</string>
+    <string name="money">1000</string>
+    <string name="no_money_tv">革命尚未成功,同志仍需努力,赶快去接单吧</string>
+    <string name="advice_hint">请留下您的宝贵意见和建议,我们将努力改进.</string>
+    <string name="phone_number_advice">请留下手机号码，以使我们回复您</string>
+    <string name="name_dialog_tv">姓名:</string>
+    <string name="modify_information">修改信息</string>
+    <string name="ok_tv">确定</string>
+    <string name="cancel_tv">取消</string>
+    <string name="sex_dialog">性别:</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="upload_photo_tv">请上传照片</string>
+    <string name="drive_age_et">驾龄:</string>
 </resources>
