@@ -3,8 +3,10 @@ package lala.com.learncar.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class DetailActivity extends Activity {
     private ImageView head_portrait;
     private RelativeLayout rl_drive_age_detail;
     private TextView drive_register_detail;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +91,15 @@ public class DetailActivity extends Activity {
     }
 
     private void showDriveAgeFindDialog() {
+
+
         AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
        final View view= View.inflate(DetailActivity.this, R.layout.dialog_drive_age, null);
+        EditText et_drive_age= (EditText) view.findViewById(R.id.et_drive_age);
+       String driveage= sharedPreferences.getString("drive_age", "");
+        if (!TextUtils.isEmpty(driveage)){
+            et_drive_age.setText(driveage);
+        }
         builder.setView(view).
                 setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
@@ -100,12 +112,15 @@ public class DetailActivity extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 EditText et_drive_age = (EditText) view.findViewById(R.id.et_drive_age);
                 String drive_age = et_drive_age.getText().toString().trim();
+
                 if (TextUtils.isEmpty(drive_age)) {
                     Toast.makeText(DetailActivity.this, "驾龄不能为空！", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    names=drive_age;
+                    names = drive_age;
                     drive_register_detail.setText(names);
+                    editor.putString("drive_age", names);
+                    editor.apply();
                     Toast.makeText(DetailActivity.this, "修改成功！", Toast.LENGTH_SHORT).show();
 
 
@@ -174,9 +189,21 @@ public class DetailActivity extends Activity {
     }
 
     private void showSexFindDialog() {
+
         AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
         View view=View.inflate(DetailActivity.this,R.layout.dialog_modify_sex,null);
+
         final RadioGroup rg_select_sex= (RadioGroup) view.findViewById(R.id.rg_select_sex);
+        RadioButton man_sex= (RadioButton) view.findViewById(R.id.man_sex);
+        RadioButton woman_sex= (RadioButton) view.findViewById(R.id.woman_sex);
+        int savedSexId=sharedPreferences.getInt("sex_id",0);
+        if (man_sex.getId()==savedSexId){
+            man_sex.setChecked(true);
+        }else if (woman_sex.getId()==savedSexId){
+            woman_sex.setChecked(true);
+        }
+
+
         Button ok_bt = (Button) view.findViewById(R.id.ok_bt);
         Button cancel_bt = (Button) view.findViewById(R.id.cancel_bt);
         ok_bt.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +217,8 @@ public class DetailActivity extends Activity {
                     sex_register_detail.setText("女");
                     Toast.makeText(DetailActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
                 }
+                editor.putInt("sex_id",select);
+                editor.apply();
                 dialog.dismiss();
             }
         });
@@ -252,7 +281,21 @@ public class DetailActivity extends Activity {
         head_portrait = (ImageView) findViewById(R.id.head_portrait);
         rl_drive_age_detail = (RelativeLayout) findViewById(R.id.rl_drive_age_detail);
         drive_register_detail = (TextView) findViewById(R.id.drive_register_detail);
+        EditText et_drive_age= (EditText) findViewById(R.id.et_drive_age);
+
+        sharedPreferences = getSharedPreferences("sql", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
 
+
+
+
+        // 回显
+//        SharedPreferences sharedPreferences=getSharedPreferences("ljq123",
+//                Context.MODE_WORLD_READABLE+Context.MODE_WORLD_WRITEABLE);
+//        String nameValue = sharedPreferences.getString("name", "");
+//        int ageValue = sharedPreferences.getInt("age", 1);
+//        nameText.setText(nameValue);
+//        ageText.setText(String.valueOf(ageValue));
     }
 }
