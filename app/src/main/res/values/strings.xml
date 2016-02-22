@@ -59,4 +59,5 @@
     <string name="weight">体重:</string>
     <string name="kg">kg</string>
     <string name="cm">cm</string>
+    <string name="introduction_myself">用一句话介绍自己</string>
 </resources>

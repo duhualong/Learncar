@@ -63,9 +63,6 @@ public class ContainerActivity extends Activity implements View.OnClickListener 
         home.setOnClickListener(this);
         trainee.setOnClickListener(this);
         my.setOnClickListener(this);
-
-
-
     }
 
     @Override

@@ -1,7 +1,10 @@
 package lala.com.learncar.fragment;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -26,17 +29,25 @@ public class MyFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout rl_advice_feedback;
     private RelativeLayout rl_customer_care;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my,container,false);
         setInitUI();
-        setViewListener();
+
         return view;
     }
 
     private void setViewListener() {
         rl_detail_my.setOnClickListener(this);
+        rl_modify_password_my.setOnClickListener(this);
+        rl_service_road.setOnClickListener(this);
+        rl_wallet_my.setOnClickListener(this);
+        rl_advice_feedback.setOnClickListener(this);
+        rl_customer_care.setOnClickListener(this);
+
+
     }
 
     private void setInitUI() {
@@ -46,7 +57,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         rl_wallet_my = (RelativeLayout) view.findViewById(R.id.rl_wallet_my);
         rl_advice_feedback = (RelativeLayout) view.findViewById(R.id.rl_advice_feedback);
         rl_customer_care = (RelativeLayout) view.findViewById(R.id.rl_customer_care);
-
+        setViewListener();
 
     }
 
@@ -68,6 +79,26 @@ public class MyFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_advice_feedback:
                 startActivity(new Intent(getActivity(), AdviceFeedbackActivity.class));
                 break;
+            case R.id.rl_customer_care:
+                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+                builder.setView(View.inflate(getActivity(),R.layout.dialog_modify_customer_care,null))
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+                        Uri data = Uri.parse("tel:" + "18817772486");
+                        intent.setData(data);
+                        startActivity(intent);
+                    }
+                }).setCancelable(true);
+                builder.create().show();
+                break;
+
         }
 
     }

@@ -32,7 +32,6 @@
         android:textColor="#444"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
-        android:text="@string/upload_photo_tv"/>
-
+        android:text="确定拨打电话？"/>
 
 </LinearLayout>

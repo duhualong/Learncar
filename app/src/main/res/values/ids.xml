@@ -103,6 +103,8 @@
 
     <item name="fragment_container" type="id"/>
     <item name="fragment_title_content" type="id"/>
+    <item name="et_location_dialog" type="id"/>
+    <item name="et_introduction_dialog" type="id"/>
 
 
 
