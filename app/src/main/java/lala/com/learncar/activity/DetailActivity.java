@@ -26,7 +26,7 @@ import com.soundcloud.android.crop.Crop;
 import lala.com.learncar.R;
 import lala.com.learncar.util.PhotoUtil;
 
-public class DetailActivity extends Activity {
+public class DetailActivity extends Activity implements View.OnClickListener{
 
     private ImageView back_left_white;
     private RelativeLayout rl_name_detail;
@@ -51,58 +51,18 @@ public class DetailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_detail);
-        initUI();
-        setOnClickListener();
+        setInitUI();
+        setViewListener();
     }
 
-    private void setOnClickListener() {
-        back_left_white.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //返回键，不能用跳转
-                onBackPressed();
-                //     startActivity(new Intent(DetailActivity.this, MyActivity.class));
-            }
-        });
-        rl_edit_head_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPhotoHeadFindDialog();
-            }
-        });
-        rl_name_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //   NameDialog nameDialog = new NameDialog();
-                showNameFindDialog();
-
-
-            }
-        });
-        rl_sex_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSexFindDialog();
-            }
-        });
-        rl_drive_age_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDriveAgeFindDialog();
-            }
-        });
-        rl_birth_calendar_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCalenderFindDialog();
-            }
-        });
-        rl_height_weight_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showHeightWeightFindDialog();
-            }
-        });
+    private void setViewListener() {
+        back_left_white.setOnClickListener(this);
+        rl_edit_head_photo.setOnClickListener(this);
+        rl_name_detail.setOnClickListener(this);
+        rl_sex_detail.setOnClickListener(this);
+        rl_drive_age_detail.setOnClickListener(this);
+        rl_birth_calendar_detail.setOnClickListener(this);
+        rl_height_weight_detail.setOnClickListener(this);
 
     }
 
@@ -161,11 +121,11 @@ public class DetailActivity extends Activity {
         final DatePicker dialogCalendar= (DatePicker) view.findViewById(R.id.dialogCalendar);
         builder.setView(view).
                 setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String date=dialogCalendar.getYear()+"-"+(dialogCalendar.getMonth()+1)+"-"+dialogCalendar.getDayOfMonth();
@@ -364,7 +324,7 @@ public class DetailActivity extends Activity {
 
     }
 
-    private void initUI() {
+    private void setInitUI() {
         back_left_white = (ImageView) findViewById(R.id.back_left_white);
         rl_name_detail = (RelativeLayout) findViewById(R.id.rl_name_detail);
         name_register_detail = (TextView) findViewById(R.id.name_register_detail);
@@ -383,16 +343,33 @@ public class DetailActivity extends Activity {
         editor = sharedPreferences.edit();
 
 
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.back_left_white:
+                onBackPressed();
+                break;
+            case R.id.rl_edit_head_photo:
+                showPhotoHeadFindDialog();
+                break;
+            case R.id.rl_name_detail:
+                showNameFindDialog();
+                break;
+            case R.id.rl_sex_detail:
+                showSexFindDialog();
+                break;
+            case R.id.rl_drive_age_detail:
+                showDriveAgeFindDialog();
+                break;
+            case R.id.rl_birth_calendar_detail:
+                showCalenderFindDialog();
+                break;
+            case R.id.rl_height_weight_detail:
+                showHeightWeightFindDialog();
+                break;
 
+        }
 
-
-
-        // 回显
-//        SharedPreferences sharedPreferences=getSharedPreferences("ljq123",
-//                Context.MODE_WORLD_READABLE+Context.MODE_WORLD_WRITEABLE);
-//        String nameValue = sharedPreferences.getString("name", "");
-//        int ageValue = sharedPreferences.getInt("age", 1);
-//        nameText.setText(nameValue);
-//        ageText.setText(String.valueOf(ageValue));
     }
 }
