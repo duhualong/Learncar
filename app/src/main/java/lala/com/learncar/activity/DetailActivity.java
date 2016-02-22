@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -41,6 +42,10 @@ public class DetailActivity extends Activity {
     private TextView drive_register_detail;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+    private RelativeLayout rl_birth_calendar_detail;
+    private TextView birth_date_register_detail;
+    private RelativeLayout rl_height_weight_detail;
+    private TextView height_weight_register_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +91,89 @@ public class DetailActivity extends Activity {
                 showDriveAgeFindDialog();
             }
         });
+        rl_birth_calendar_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCalenderFindDialog();
+            }
+        });
+        rl_height_weight_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHeightWeightFindDialog();
+            }
+        });
+
+    }
+
+    private void showHeightWeightFindDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
+        View view=View.inflate(DetailActivity.this, R.layout.dialog_modify_weight_height, null);
+      final EditText et_height_number= (EditText) view.findViewById(R.id.et_height_number);
+       final EditText et_weight_number= (EditText) view.findViewById(R.id.et_weight_number);
+        String savedWeight=sharedPreferences.getString("drive_weight", "");
+        String savedHeight=sharedPreferences.getString("drive_height","");
+
+        if (!TextUtils.isEmpty(savedWeight)){
+            et_weight_number.setText(savedWeight);
+        }
+        if (!TextUtils.isEmpty(savedHeight)){
+            et_height_number.setText(savedHeight);
+        }
+        builder.setView(view).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String height = et_height_number.getText().toString().trim();
+                String weight = et_weight_number.getText().toString().trim();
+
+                String weightHeight=height+" cm"+" | "+weight+" kg";
+
+                if (TextUtils.isEmpty(height) || TextUtils.isEmpty(weight)) {
+                    Toast.makeText(DetailActivity.this, "身高或体重不能为空！", Toast.LENGTH_SHORT).show();
+
+                } else if (!TextUtils.isEmpty(weight) && !TextUtils.isEmpty(height)) {
+
+                    names=weightHeight;
+                    height_weight_register_detail.setText(names);
 
 
+
+                }
+
+                editor.putString("drive_weight", weight);
+                editor.putString("drive_height", height);
+                editor.apply();
+
+            }
+        }).setCancelable(true);
+        builder.create().show();
+    }
+
+    private void showCalenderFindDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
+        View view=View.inflate(DetailActivity.this, R.layout.dialog_drive_calendar, null);
+        final DatePicker dialogCalendar= (DatePicker) view.findViewById(R.id.dialogCalendar);
+        builder.setView(view).
+                setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String date=dialogCalendar.getYear()+"-"+(dialogCalendar.getMonth()+1)+"-"+dialogCalendar.getDayOfMonth();
+                birth_date_register_detail.setText(date);
+
+            }
+        }).setCancelable(true);
+        builder.create().show();
     }
 
     private void showDriveAgeFindDialog() {
@@ -196,7 +282,7 @@ public class DetailActivity extends Activity {
         final RadioGroup rg_select_sex= (RadioGroup) view.findViewById(R.id.rg_select_sex);
         RadioButton man_sex= (RadioButton) view.findViewById(R.id.man_sex);
         RadioButton woman_sex= (RadioButton) view.findViewById(R.id.woman_sex);
-        int savedSexId=sharedPreferences.getInt("sex_id",0);
+        int savedSexId=sharedPreferences.getInt("sex_id", 0);
         if (man_sex.getId()==savedSexId){
             man_sex.setChecked(true);
         }else if (woman_sex.getId()==savedSexId){
@@ -209,6 +295,7 @@ public class DetailActivity extends Activity {
         ok_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //获取性别的id
                 int select=rg_select_sex.getCheckedRadioButtonId();
                 if(select==R.id.man_sex){
                     sex_register_detail.setText("男");
@@ -239,6 +326,10 @@ public class DetailActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
         View view = View.inflate(DetailActivity.this, R.layout.dialog_modify_name, null);
         final EditText et_name_dialog = (EditText) view.findViewById(R.id.et_name_dialog);
+        String savedName=sharedPreferences.getString("name", "");
+        if (!TextUtils.isEmpty(savedName)) {
+            et_name_dialog.setText(savedName);
+        }
         Button ok_bt = (Button) view.findViewById(R.id.ok_bt);
         Button cancel_bt = (Button) view.findViewById(R.id.cancel_bt);
         cancel_bt.setOnClickListener(new View.OnClickListener() {
@@ -257,6 +348,8 @@ public class DetailActivity extends Activity {
              }else {
                  names=name;
                  name_register_detail.setText(names);
+                 editor.putString("name",names);
+                 editor.apply();
                  Toast.makeText(DetailActivity.this, "修改成功！", Toast.LENGTH_SHORT).show();
              }
 
@@ -281,10 +374,14 @@ public class DetailActivity extends Activity {
         head_portrait = (ImageView) findViewById(R.id.head_portrait);
         rl_drive_age_detail = (RelativeLayout) findViewById(R.id.rl_drive_age_detail);
         drive_register_detail = (TextView) findViewById(R.id.drive_register_detail);
-        EditText et_drive_age= (EditText) findViewById(R.id.et_drive_age);
+        rl_birth_calendar_detail = (RelativeLayout) findViewById(R.id.rl_birth_calendar_detail);
+        birth_date_register_detail = (TextView) findViewById(R.id.birth_date_register_detail);
+        rl_height_weight_detail = (RelativeLayout) findViewById(R.id.rl_height_weight_detail);
+        height_weight_register_detail = (TextView) findViewById(R.id.height_weight_register_detail);
 
         sharedPreferences = getSharedPreferences("sql", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
 
 
 

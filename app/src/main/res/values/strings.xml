@@ -55,4 +55,8 @@
     <string name="woman">女</string>
     <string name="upload_photo_tv">请上传照片</string>
     <string name="drive_age_et">驾龄:</string>
+    <string name="height">身高:</string>
+    <string name="weight">体重:</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
 </resources>

@@ -93,5 +93,17 @@
     <item name="woman_sex" type="id"/>
     <item name="iv_logo_head_photo" type="id"/>
     <item name="et_drive_age" type="id"/>
+    <item name="dialogCalendar" type="id"/>
+    <item name="rl_birth_calendar_detail" type="id"/>
+    <item name="tv_height" type="id"/>
+    <item name="et_height_number" type="id"/>
+    <item name="iv_height" type="id"/>
+    <item name="et_weight_number" type="id"/>
+    <item name="iv_weight" type="id"/>
+
+    <item name="fragment_container" type="id"/>
+    <item name="fragment_title_content" type="id"/>
+
+
 
 </resources>
