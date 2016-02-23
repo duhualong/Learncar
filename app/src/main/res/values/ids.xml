@@ -105,6 +105,9 @@
     <item name="fragment_title_content" type="id"/>
     <item name="et_location_dialog" type="id"/>
     <item name="et_introduction_dialog" type="id"/>
+    <item name="finish" type="id"/>
+    <item name="addCarLicense" type="id"/>
+    <item name="modifyCarLicense" type="id"/>
 
 
 

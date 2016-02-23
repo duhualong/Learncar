@@ -50,6 +50,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     private TextView ancestral_homeland_register_detail;
     private RelativeLayout rl_introduction_detail;
     private TextView introduction_register_detail;
+    private RelativeLayout rl_driving_license_detail;
+    private RelativeLayout rl_teacher_certificate_detail;
+    private RelativeLayout rl_car_license_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         rl_height_weight_detail.setOnClickListener(this);
         rl_ancestral_homeland_detail.setOnClickListener(this);
         rl_introduction_detail.setOnClickListener(this);
+        rl_driving_license_detail.setOnClickListener(this);
+        rl_teacher_certificate_detail.setOnClickListener(this);
+        rl_car_license_detail.setOnClickListener(this);
 
     }
 
@@ -306,7 +312,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         ancestral_homeland_register_detail = (TextView) findViewById(R.id.ancestral_homeland_register_detail);
         rl_introduction_detail = (RelativeLayout) findViewById(R.id.rl_introduction_detail);
         introduction_register_detail = (TextView) findViewById(R.id.introduction_register_detail);
-
+        rl_driving_license_detail = (RelativeLayout) findViewById(R.id.rl_driving_license_detail);
+        rl_teacher_certificate_detail = (RelativeLayout) findViewById(R.id.rl_teacher_certificate_detail);
+        rl_car_license_detail = (RelativeLayout) findViewById(R.id.rl_car_license_detail);
         sharedPreferences = getSharedPreferences("sql", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         setViewListener();
@@ -343,8 +351,55 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             case R.id.rl_introduction_detail:
                 showIntroductionFindDialog();
                 break;
+            case R.id.rl_driving_license_detail:
+                showDrivingLicenseFindDialog();
+                break;
+            case R.id.rl_teacher_certificate_detail:
+                showTeacherCertificateFindDialog();
+                break;
+            case R.id.rl_car_license_detail:
+                startActivity(new Intent(DetailActivity.this,ModifyCarLicense.class));
+                break;
 
         }
+
+    }
+
+
+
+    private void showTeacherCertificateFindDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
+        builder.setView(View.inflate(DetailActivity.this,R.layout.dialog_drive_license,null)).
+                setNegativeButton("照片", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("拍照", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setCancelable(true);
+        builder.create().show();
+
+    }
+
+    private void showDrivingLicenseFindDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(DetailActivity.this);
+        builder.setView(View.inflate(DetailActivity.this,R.layout.dialog_drive_license,null)).
+                setNegativeButton("照片", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("拍照", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setCancelable(true);
+        builder.create().show();
 
     }
 

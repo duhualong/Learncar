@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lala.com.learncar">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,9 +25,9 @@
         <activity android:name=".activity.PasswordModifyActivity" />
         <activity android:name=".activity.ServiceRoadActivity" />
         <activity android:name=".activity.MyWalletActivity" />
-        <activity android:name=".activity.AdviceFeedbackActivity"/>
+        <activity android:name=".activity.AdviceFeedbackActivity" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-
+        <activity android:name=".activity.ModifyCarLicense"></activity>
     </application>
 
 </manifest>
