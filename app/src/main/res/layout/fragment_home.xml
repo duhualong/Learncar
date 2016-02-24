@@ -207,6 +207,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:gravity="center"
+                        android:focusable="true"
                         android:orientation="vertical">
                         <TextView
                             android:layout_gravity="start"
@@ -220,6 +221,7 @@
                             android:textColor="#333333"
                             android:singleLine="true"
                             android:ellipsize="marquee"
+                            android:clickable="true"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:focusableInTouchMode="true"
                             android:focusable="true"

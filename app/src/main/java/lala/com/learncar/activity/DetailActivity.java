@@ -53,6 +53,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     private RelativeLayout rl_driving_license_detail;
     private RelativeLayout rl_teacher_certificate_detail;
     private RelativeLayout rl_car_license_detail;
+    private RelativeLayout rl_my_photo_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         rl_driving_license_detail.setOnClickListener(this);
         rl_teacher_certificate_detail.setOnClickListener(this);
         rl_car_license_detail.setOnClickListener(this);
-
+        rl_my_photo_detail.setOnClickListener(this);
     }
 
     private void showHeightWeightFindDialog() {
@@ -153,9 +154,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
         final View view = View.inflate(DetailActivity.this, R.layout.dialog_drive_age, null);
         EditText et_drive_age = (EditText) view.findViewById(R.id.et_drive_age);
-        String driveage = sharedPreferences.getString("drive_age", "");
-        if (!TextUtils.isEmpty(driveage)) {
-            et_drive_age.setText(driveage);
+        String driveAge = sharedPreferences.getString("drive_age", "");
+        if (!TextUtils.isEmpty(driveAge)) {
+            et_drive_age.setText(driveAge);
         }
         builder.setView(view).
                 setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -315,6 +316,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         rl_driving_license_detail = (RelativeLayout) findViewById(R.id.rl_driving_license_detail);
         rl_teacher_certificate_detail = (RelativeLayout) findViewById(R.id.rl_teacher_certificate_detail);
         rl_car_license_detail = (RelativeLayout) findViewById(R.id.rl_car_license_detail);
+        rl_my_photo_detail = (RelativeLayout) findViewById(R.id.rl_my_photo_detail);
         sharedPreferences = getSharedPreferences("sql", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         setViewListener();
@@ -360,11 +362,16 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             case R.id.rl_car_license_detail:
                 startActivity(new Intent(DetailActivity.this,ModifyCarLicense.class));
                 break;
-
+            case R.id.rl_my_photo_detail:
+                showUploadPhotoFindDialog();
+                break;
         }
 
     }
 
+    private void showUploadPhotoFindDialog() {
+
+    }
 
 
     private void showTeacherCertificateFindDialog() {

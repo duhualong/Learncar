@@ -64,17 +64,13 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
                     public void onClick(DialogInterface dialog, int which) {
                         String content=modifyCarLicense.getText().toString().trim();
                         if (TextUtils.isEmpty(content)){
-
                                 System.out.println("11111_____1111111");
                                 list.remove(position);
                                 adapter.notifyDataSetChanged();
+                        }else{
 
-                        }else {
-                          View v= parent.getChildAt(position);
 
-                            adapter.notifyDataSetChanged();
                         }
-
 
                     }
                 }).setCancelable(true);
@@ -166,6 +162,7 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
                 break;
             case R.id.finish:
                 onBackPressed();
+                Toast.makeText(getApplicationContext(),"修改成功！",Toast.LENGTH_SHORT).show();
                 break;
 
         }
