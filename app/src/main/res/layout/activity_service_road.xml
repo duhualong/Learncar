@@ -89,9 +89,8 @@
             android:ellipsize="end"
             android:text="@string/address_tv_location_automatic"/>
     </RelativeLayout>
-    <ScrollView
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ScrollView>
+        android:layout_height="match_parent" />
 </LinearLayout>

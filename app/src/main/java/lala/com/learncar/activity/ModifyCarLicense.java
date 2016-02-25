@@ -3,6 +3,7 @@ package lala.com.learncar.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import lala.com.learncar.R;
 
@@ -28,6 +31,8 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
     private List<String> list;
     private MyAdapter adapter;
     private TextView finish;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,9 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
                                 adapter.notifyDataSetChanged();
                         }else{
 
+                            list.set(position,content);
+                            adapter.notifyDataSetChanged();
+
 
                         }
 
@@ -105,13 +113,14 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
             if (convertView==null) {
                 holder=new ViewHolder();
                 view = View.inflate(ModifyCarLicense.this, R.layout.list_item, null);
-                holder.textViewItem= (TextView) view.findViewById(R.id.textViewItem);
+                holder.textViewItem=(TextView) view.findViewById(R.id.textViewItem);
                 view.setTag(holder);
 
             }else{
                 view=convertView;
                 holder= (ViewHolder) view.getTag();
             }
+            
             holder.textViewItem.setText(list.get(position));
             return view;
         }
@@ -166,5 +175,19 @@ public class ModifyCarLicense extends Activity implements View.OnClickListener{
                 break;
 
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Set<String> set=new HashSet<>();
+        for (String str:list){
+           set.add(str);
+
+        }
+        sharedPreferences=getSharedPreferences("sql",MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+        editor.putStringSet("carLicenses",set);
+        editor.apply();
     }
 }

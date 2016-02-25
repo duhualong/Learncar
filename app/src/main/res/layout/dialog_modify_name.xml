@@ -37,25 +37,5 @@
             android:inputType="text"
             android:textColor="#444" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-    <Button
-        android:id="@id/ok_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#333"
-        android:background="@drawable/shape1"
-        android:text="@string/ok_tv"/>
-        <Button
-            android:id="@id/cancel_bt"
-            android:layout_marginStart="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#333"
-            android:background="@drawable/shape1"
-            android:text="@string/cancel_tv"/>
-    </LinearLayout>
+
 </LinearLayout>

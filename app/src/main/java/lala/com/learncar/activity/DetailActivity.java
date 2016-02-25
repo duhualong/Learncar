@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.soundcloud.android.crop.Crop;
+
+import java.util.Set;
 
 import lala.com.learncar.R;
 import lala.com.learncar.util.PhotoUtil;
@@ -260,13 +261,15 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         } else if (woman_sex.getId() == savedSexId) {
             woman_sex.setChecked(true);
         }
-
-
-        Button ok_bt = (Button) view.findViewById(R.id.ok_bt);
-        Button cancel_bt = (Button) view.findViewById(R.id.cancel_bt);
-        ok_bt.setOnClickListener(new View.OnClickListener() {
+        builder.setView(view).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 //获取性别的id
                 int select = rg_select_sex.getCheckedRadioButtonId();
                 if (select == R.id.man_sex) {
@@ -279,19 +282,10 @@ public class DetailActivity extends Activity implements View.OnClickListener {
                 editor.putInt("sex_id", select);
                 editor.apply();
                 dialog.dismiss();
-            }
-        });
-        cancel_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog = builder.create();
-        dialog.setView(view, 0, 0, 0, 30);
-        dialog.show();
 
-
+            }
+        }).setCancelable(true);
+        builder.create().show();
     }
 
 
@@ -316,9 +310,22 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         rl_driving_license_detail = (RelativeLayout) findViewById(R.id.rl_driving_license_detail);
         rl_teacher_certificate_detail = (RelativeLayout) findViewById(R.id.rl_teacher_certificate_detail);
         rl_car_license_detail = (RelativeLayout) findViewById(R.id.rl_car_license_detail);
-        rl_my_photo_detail = (RelativeLayout) findViewById(R.id.rl_my_photo_detail);
         sharedPreferences = getSharedPreferences("sql", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        TextView car_license_register_detail= (TextView) findViewById(R.id.car_license_register_detail);
+        Set<String> set = sharedPreferences.getStringSet("carLicenses", null);
+        String carLicenses="";
+        if (set!=null) {
+
+            for (String str : set) {
+                carLicenses += str + " ";
+            }
+
+            car_license_register_detail.setText(carLicenses);
+        }
+        rl_my_photo_detail = (RelativeLayout) findViewById(R.id.rl_my_photo_detail);
+
+
         setViewListener();
 
     }
@@ -451,17 +458,13 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         if (!TextUtils.isEmpty(savedName)) {
             et_name_dialog.setText(savedName);
         }
-        Button ok_bt = (Button) view.findViewById(R.id.ok_bt);
-        Button cancel_bt = (Button) view.findViewById(R.id.cancel_bt);
-        cancel_bt.setOnClickListener(new View.OnClickListener() {
+        builder.setView(view).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                dialog.dismiss();
+            public void onClick(DialogInterface dialog, int which) {
             }
-        });
-        ok_bt.setOnClickListener(new View.OnClickListener() {
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 String name = et_name_dialog.getText().toString().trim();
                 if (TextUtils.isEmpty(name)) {
                     Toast.makeText(DetailActivity.this, "姓名不能为空", Toast.LENGTH_SHORT).show();
@@ -476,10 +479,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
 
                 dialog.dismiss();
             }
-        });
-        dialog = builder.create();
-        dialog.setView(view, 0, 0, 0, 30);
-        dialog.show();
+        }).setCancelable(true);
+        builder.create().show();
+
 
 
     }
@@ -516,7 +518,5 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             }
         }).setCancelable(true);
         builder.create().show();
-
-
     }
 }
