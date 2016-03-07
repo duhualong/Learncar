@@ -16,7 +16,7 @@ import lala.com.learncar.activity.AdviceFeedbackActivity;
 import lala.com.learncar.activity.DetailActivity;
 import lala.com.learncar.activity.MyWalletActivity;
 import lala.com.learncar.activity.PasswordModifyActivity;
-import lala.com.learncar.activity.ServiceRoadActivity;
+import lala.com.learncar.activity.ServiceRoadActivity1;
 
 public class MyActivity extends Activity{
     private LinearLayout home;
@@ -70,7 +70,7 @@ public class MyActivity extends Activity{
         rl_service_road.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyActivity.this, ServiceRoadActivity.class));
+                startActivity(new Intent(MyActivity.this, ServiceRoadActivity1.class));
             }
         });
         rl_wallet_my.setOnClickListener(new View.OnClickListener() {
